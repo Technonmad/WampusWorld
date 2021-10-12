@@ -1,0 +1,10 @@
+C:\Users\User\source\repos\WampusWorld\WampusWorld\bin\Debug\WampusWorld.exe.config
+C:\Users\User\source\repos\WampusWorld\WampusWorld\bin\Debug\WampusWorld.exe
+C:\Users\User\source\repos\WampusWorld\WampusWorld\bin\Debug\WampusWorld.pdb
+C:\Users\User\source\repos\WampusWorld\WampusWorld\obj\Debug\WampusWorld.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\WampusWorld\WampusWorld\obj\Debug\WampusWorld.Properties.Resources.resources
+C:\Users\User\source\repos\WampusWorld\WampusWorld\obj\Debug\WampusWorld.csproj.GenerateResource.cache
+C:\Users\User\source\repos\WampusWorld\WampusWorld\obj\Debug\WampusWorld.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\WampusWorld\WampusWorld\obj\Debug\WampusWorld.exe
+C:\Users\User\source\repos\WampusWorld\WampusWorld\obj\Debug\WampusWorld.pdb
+C:\Users\User\source\repos\WampusWorld\WampusWorld\obj\Debug\WampusWorld.Form1.resources
