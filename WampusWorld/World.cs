@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace WampusWorld
 {
-    class World
+    public class World
     {
         Button[,] WorldButtons = new Button[4, 4];
         Random random = new Random();
@@ -30,15 +30,31 @@ namespace WampusWorld
             }
 
             MakeWampus(panel1);
-
+            MakeUnit(panel1);
+            MakeTreasure(panel1);
+            
+            
         }
         public void MakeWampus(Panel panel)
         {
-            row = random.Next(0, 3);
+            row = random.Next(1, 3);
             col = random.Next(0, 3);
-            WorldButtons[row, col].Image = Image.FromFile("C:\\Users\\user\\source\\repos\\WampusWorld\\images\\wampus.png");
-            
+            WorldButtons[row, col].Image = Image.FromFile("C://Users/Anton/Documents/GitHub/WampusWorld/images/wampus.png");
+        }
 
+        public void MakeUnit(Panel panel1)
+        {
+            WorldButtons[3, 0].Image = Image.FromFile("C://Users/Anton/Documents/GitHub/WampusWorld/images/unit.png");
+        }
+
+        public void MakeTreasure(Panel panel1)
+        {
+            int row1 = random.Next(1, 3);
+            int col1 = random.Next(0, 3);
+            if(row1 == row && col1 == col)
+                WorldButtons[row1 + 1, col1].Image = Image.FromFile("C://Users/Anton/Documents/GitHub/WampusWorld/images/treasure.png");
+            else
+                WorldButtons[row1, col1].Image = Image.FromFile("C://Users/Anton/Documents/GitHub/WampusWorld/images/treasure.png");
         }
 
     }

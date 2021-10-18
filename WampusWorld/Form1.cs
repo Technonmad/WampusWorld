@@ -14,6 +14,7 @@ namespace WampusWorld
     {
         World world = new World();
         Knowledge knowledge = new Knowledge();
+        Game
         public Form1()
         {
             InitializeComponent();
@@ -33,6 +34,11 @@ namespace WampusWorld
         {
             world.MakeWorld(panel1);
             knowledge.MakeKnowledgeMap(panel2);
+        }
+
+        private void button33_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

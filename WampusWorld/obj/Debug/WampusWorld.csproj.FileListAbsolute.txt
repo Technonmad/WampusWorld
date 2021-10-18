@@ -8,3 +8,13 @@ C:\Users\User\source\repos\WampusWorld\WampusWorld\obj\Debug\WampusWorld.csproj.
 C:\Users\User\source\repos\WampusWorld\WampusWorld\obj\Debug\WampusWorld.exe
 C:\Users\User\source\repos\WampusWorld\WampusWorld\obj\Debug\WampusWorld.pdb
 C:\Users\User\source\repos\WampusWorld\WampusWorld\obj\Debug\WampusWorld.Form1.resources
+C:\Users\Anton\Documents\GitHub\WampusWorld\WampusWorld\bin\Debug\WampusWorld.exe.config
+C:\Users\Anton\Documents\GitHub\WampusWorld\WampusWorld\bin\Debug\WampusWorld.exe
+C:\Users\Anton\Documents\GitHub\WampusWorld\WampusWorld\bin\Debug\WampusWorld.pdb
+C:\Users\Anton\Documents\GitHub\WampusWorld\WampusWorld\obj\Debug\WampusWorld.csprojAssemblyReference.cache
+C:\Users\Anton\Documents\GitHub\WampusWorld\WampusWorld\obj\Debug\WampusWorld.Form1.resources
+C:\Users\Anton\Documents\GitHub\WampusWorld\WampusWorld\obj\Debug\WampusWorld.Properties.Resources.resources
+C:\Users\Anton\Documents\GitHub\WampusWorld\WampusWorld\obj\Debug\WampusWorld.csproj.GenerateResource.cache
+C:\Users\Anton\Documents\GitHub\WampusWorld\WampusWorld\obj\Debug\WampusWorld.csproj.CoreCompileInputs.cache
+C:\Users\Anton\Documents\GitHub\WampusWorld\WampusWorld\obj\Debug\WampusWorld.exe
+C:\Users\Anton\Documents\GitHub\WampusWorld\WampusWorld\obj\Debug\WampusWorld.pdb
