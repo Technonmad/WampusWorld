@@ -12,9 +12,9 @@ namespace WampusWorld
 {
     public partial class Form1 : Form
     {
+        Game game = new Game();
         World world = new World();
         Knowledge knowledge = new Knowledge();
-        Game
         public Form1()
         {
             InitializeComponent();

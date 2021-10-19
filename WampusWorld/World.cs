@@ -10,21 +10,23 @@ namespace WampusWorld
 {
     public class World
     {
-        Button[,] WorldButtons = new Button[4, 4];
         Random random = new Random();
-        int row, col;
+        int row_wampus, col_wampus, row_treasure, col_treasure, row_pit1, col_pit1, row_pit2, col_pit2;
+        Button[,] World_array = new Button[4, 4];
+
+
         public void MakeWorld(Panel panel1)
         {
-            for(int i = 0; i < WorldButtons.GetLength(0); i++)
+            for(int i = 0; i < World_array.GetLength(0); i++)
             {
-                for(int j = 0; j < WorldButtons.GetLength(1); j++)
+                for(int j = 0; j < World_array.GetLength(1); j++)
                 {
                     Button btn = new Button();
                     btn.Name = "btn" + i + j;
                     btn.Width = 80;
                     btn.Height = 80;
                     btn.Location = new Point(btn.Width * j, btn.Height * i);
-                    WorldButtons[i, j] = btn;
+                    World_array[i, j] = btn;
                     panel1.Controls.Add(btn);
                 }
             }
@@ -32,29 +34,64 @@ namespace WampusWorld
             MakeWampus(panel1);
             MakeUnit(panel1);
             MakeTreasure(panel1);
-            
+            makePits(panel1);
             
         }
         public void MakeWampus(Panel panel)
         {
-            row = random.Next(1, 3);
-            col = random.Next(0, 3);
-            WorldButtons[row, col].Image = Image.FromFile("C://Users/Anton/Documents/GitHub/WampusWorld/images/wampus.png");
+            row_wampus = random.Next(0, 3);
+            col_wampus = random.Next(0, 3);
+            while(row_wampus == 0 && col_wampus == 0)
+            {
+                row_wampus = random.Next(0, 3);
+                col_wampus = random.Next(0, 3);
+            }
+            World_array[row_wampus, col_wampus].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/wampus.png");
         }
 
         public void MakeUnit(Panel panel1)
         {
-            WorldButtons[3, 0].Image = Image.FromFile("C://Users/Anton/Documents/GitHub/WampusWorld/images/unit.png");
+            World_array[3, 0].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/unit.png");
         }
 
         public void MakeTreasure(Panel panel1)
         {
-            int row1 = random.Next(1, 3);
-            int col1 = random.Next(0, 3);
-            if(row1 == row && col1 == col)
-                WorldButtons[row1 + 1, col1].Image = Image.FromFile("C://Users/Anton/Documents/GitHub/WampusWorld/images/treasure.png");
-            else
-                WorldButtons[row1, col1].Image = Image.FromFile("C://Users/Anton/Documents/GitHub/WampusWorld/images/treasure.png");
+            row_treasure = random.Next(0, 3);
+            col_treasure = random.Next(0, 3);
+            while ((row_treasure == row_wampus && col_treasure == col_wampus) || (row_treasure == 0 && col_treasure == 0))
+            {
+                row_treasure = random.Next(0, 3);
+                col_treasure = random.Next(0, 3);
+            }
+
+            World_array[row_treasure, col_treasure].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/treasure.png");
+        }
+
+        public void makePits(Panel panel1)
+        {
+            row_pit1 = random.Next(0, 3);
+            col_pit1 = random.Next(0, 3);
+            
+            while((row_pit1 == row_wampus && col_pit1 == col_wampus) || (row_pit1 == 0
+                && col_pit1 == 0) || (row_pit1 == row_treasure && col_pit1 == col_treasure))
+            {
+                row_pit1 = random.Next(0, 3);
+                col_pit1 = random.Next(0, 3);
+            }
+
+            World_array[row_pit1, col_pit1].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/pit.png");
+            
+            row_pit2 = random.Next(0, 3);
+            col_pit2 = random.Next(0, 3);
+
+            while ((row_pit2 == row_wampus && col_pit2 == col_wampus) || (row_pit2 == 0 && col_pit2 == 0)
+                || (row_pit2 == row_treasure && col_pit2 == col_treasure) || (row_pit2 == row_pit1 && col_pit2 == col_pit1))
+            {
+                row_pit2 = random.Next(0, 3);
+                col_pit2 = random.Next(0, 3);
+            }
+
+            World_array[row_pit2, col_pit2].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/pit.png");
         }
 
     }

@@ -9,16 +9,7 @@ namespace WampusWorld
 {
    public class Game
     {
-        Game(Button[,] World_Array)
-        {
-            this.world = World_Array;
-        }
-
-        Unit unit = new Unit();
-        World newWorld = new World();
-        Button[,] world;
-
-
+        
 
     }
 }
