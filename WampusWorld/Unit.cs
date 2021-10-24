@@ -10,49 +10,48 @@ namespace WampusWorld
 {
     public class Unit
     {
-        int score = 0, row = 3, col = 0;
-        bool arrow = true;
-        
-        public void MoveUp(Button[,] world)
+        Button[,] knowledge_map = new Button[4, 4];
+        public void MoveUp(Button[,] world, int row, int col)
         {
-            score -= 10;
             row++;
             world[row,col].Image = Image.FromFile("C://Users/Anton/Documents/GitHub/WampusWorld/images/unit.png");
         }
-        
-        public void MoveDown(TextBox[,] textBox_array)
+
+        public Unit(Panel panel1, Button[,] World_array)
         {
-            score -= 10;
+            World_array[3, 0].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/unit.png");
+            int posx = 0;
+            int posy = 3;
         }
 
-        public void MoveLeft(TextBox[,] textBox_array)
+        public void checkPlace(int posX, int posY, bool Stench, bool Breeze, bool Glitter, bool Bump, bool Died, Button[,] knowledge)
         {
-            score -= 10;
+            if(posX == 0 && posY == 3)
+                knowledge[posY, posX].Text = "OK";
+            if (!Died)
+            {
+                if (Stench)
+                {
+                    knowledge[posY, posX].Text = "S";
+
+                }
+            }
+            
         }
 
-        public void MoveRight(TextBox[,] textBox_array)
+        public void FindTreasure(Button[,] btn_array)
         {
-            score -= 10;
+            
         }
 
-        public void FindTreasure(TextBox[,] textBox_array)
+        public void Died(Button[,] btn_array)
         {
-            score += 1000;
-        }
-
-        public void DiedFromWampus(TextBox[,] textBox_array)
-        {
-            score -= 1000;
-        }
-
-        public void DiedFromPit(TextBox[,] textBox_array)
-        {
-            score -= 1000;
+            
         }
 
         public void Shoot()
         {
-            score -= 11;
+            
         }
     }
 }

@@ -12,10 +12,9 @@ namespace WampusWorld
     {
         Random random = new Random();
         int row_wampus, col_wampus, row_treasure, col_treasure, row_pit1, col_pit1, row_pit2, col_pit2;
-        Button[,] World_array = new Button[4, 4];
 
 
-        public void MakeWorld(Panel panel1)
+        public void MakeWorld(Panel panel1, Button[,] World_array) 
         {
             for(int i = 0; i < World_array.GetLength(0); i++)
             {
@@ -31,13 +30,12 @@ namespace WampusWorld
                 }
             }
 
-            MakeWampus(panel1);
-            MakeUnit(panel1);
-            MakeTreasure(panel1);
-            makePits(panel1);
+            MakeWampus(panel1, World_array);
+            MakeTreasure(panel1, World_array);
+            makePits(panel1, World_array);
             
         }
-        public void MakeWampus(Panel panel)
+        public void MakeWampus(Panel panel, Button[,] World_array)
         {
             row_wampus = random.Next(0, 3);
             col_wampus = random.Next(0, 3);
@@ -47,14 +45,20 @@ namespace WampusWorld
                 col_wampus = random.Next(0, 3);
             }
             World_array[row_wampus, col_wampus].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/wampus.png");
+            if((row_wampus + 1) < 4)
+                World_array[row_wampus + 1, col_wampus].Text += "S";
+            if((col_wampus + 1) < 4)
+                World_array[row_wampus, col_wampus + 1].Text += "S";
+            if((row_wampus - 1) >= 0)
+                World_array[row_wampus - 1, col_wampus].Text += "S";
+            if((col_wampus - 1) >= 0)
+                World_array[row_wampus, col_wampus - 1].Text += "S";
+
         }
 
-        public void MakeUnit(Panel panel1)
-        {
-            World_array[3, 0].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/unit.png");
-        }
+        
 
-        public void MakeTreasure(Panel panel1)
+        public void MakeTreasure(Panel panel1, Button[,] World_array)
         {
             row_treasure = random.Next(0, 3);
             col_treasure = random.Next(0, 3);
@@ -65,9 +69,10 @@ namespace WampusWorld
             }
 
             World_array[row_treasure, col_treasure].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/treasure.png");
+            World_array[row_treasure, col_treasure].Text = "G";
         }
 
-        public void makePits(Panel panel1)
+        public void makePits(Panel panel1, Button[,] World_array)
         {
             row_pit1 = random.Next(0, 3);
             col_pit1 = random.Next(0, 3);
@@ -92,6 +97,49 @@ namespace WampusWorld
             }
 
             World_array[row_pit2, col_pit2].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/pit.png");
+
+            if((row_pit1 + 1) < 4)
+            {
+                if (World_array[row_pit1 + 1, col_pit1].Text != "B" && World_array[row_pit1 + 1, col_pit1].Text != "SB")
+                    World_array[row_pit1 + 1, col_pit1].Text += "B";
+            }
+            if((col_pit1 + 1) < 4)
+            {
+                if (World_array[row_pit1, col_pit1 + 1].Text != "B" && World_array[row_pit1, col_pit1 + 1].Text != "SB")
+                    World_array[row_pit1, col_pit1 + 1].Text += "B";
+            }
+            if((row_pit1 - 1) >= 0)
+            {
+                if (World_array[row_pit1 - 1, col_pit1].Text != "B" && World_array[row_pit1 - 1, col_pit1].Text != "SB")
+                    World_array[row_pit1 - 1, col_pit1].Text += "B";
+            }
+            if((col_pit1 - 1) >= 0)
+            {
+                if (World_array[row_pit1, col_pit1 - 1].Text != "B" && World_array[row_pit1, col_pit1 - 1].Text != "SB")
+                    World_array[row_pit1, col_pit1 - 1].Text += "B";
+            }
+
+            if((row_pit2 + 1) < 4)
+            {
+                if (World_array[row_pit2 + 1, col_pit2].Text != "B" && World_array[row_pit2 + 1, col_pit2].Text != "SB")
+                    World_array[row_pit2 + 1, col_pit2].Text += "B";
+            }
+            if((col_pit2 + 1) < 4)
+            {
+                if (World_array[row_pit2, col_pit2 + 1].Text != "B" && World_array[row_pit2, col_pit2 + 1].Text != "SB")
+                    World_array[row_pit2, col_pit2 + 1].Text += "B";
+            }
+            if((row_pit2 - 1) >= 0)
+            {
+                if (World_array[row_pit2 - 1, col_pit2].Text != "B" && World_array[row_pit2 - 1, col_pit2].Text != "SB")
+                    World_array[row_pit2 - 1, col_pit2].Text += "B";
+            }
+            if((col_pit2 - 1) >= 0)
+            {
+                if (World_array[row_pit2, col_pit2 - 1].Text != "B" && World_array[row_pit2, col_pit2 - 1].Text != "SB")
+                    World_array[row_pit2, col_pit2 - 1].Text += "B";
+            }
+            
         }
 
     }

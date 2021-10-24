@@ -15,6 +15,9 @@ namespace WampusWorld
         Game game = new Game();
         World world = new World();
         Knowledge knowledge = new Knowledge();
+        Button[,] world_array = new Button[4, 4];
+        Button[,] knowledge_array = new Button[4, 4];
+
         public Form1()
         {
             InitializeComponent();
@@ -32,7 +35,7 @@ namespace WampusWorld
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            world.MakeWorld(panel1);
+            world.MakeWorld(panel1, world_array);
             knowledge.MakeKnowledgeMap(panel2);
         }
 
