@@ -11,30 +11,24 @@ namespace WampusWorld
     public class Unit
     {
         Button[,] knowledge_map = new Button[4, 4];
-        public void MoveUp(Button[,] world, int row, int col)
-        {
-            row++;
-            world[row,col].Image = Image.FromFile("C://Users/Anton/Documents/GitHub/WampusWorld/images/unit.png");
-        }
+        public int posx, posy;
 
-        public Unit(Panel panel1, Button[,] World_array)
+        public void MakeUnit(Panel panel1, Button[,] World_array)
         {
             World_array[3, 0].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/unit.png");
-            int posx = 0;
-            int posy = 3;
+            posx = 0;
+            posy = 3;
         }
 
-        public void checkPlace(int posX, int posY, bool Stench, bool Breeze, bool Glitter, bool Bump, bool Died, Button[,] knowledge)
+       //Доделать
+        public void checkPlace(Button[,] World_array)
         {
-            if(posX == 0 && posY == 3)
-                knowledge[posY, posX].Text = "OK";
-            if (!Died)
+            if(posx == 0 && posy == 3)
+                knowledge_map[posy, posx].Text = "OK";
+            if (World_array[posy, posx].Image == Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/pit.png") 
+                || World_array[posy, posx].Image == Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/wampus.png"))
             {
-                if (Stench)
-                {
-                    knowledge[posY, posX].Text = "S";
-
-                }
+                
             }
             
         }
@@ -52,6 +46,13 @@ namespace WampusWorld
         public void Shoot()
         {
             
+        }
+
+        public void Move(Panel panel1, Button[,] world_array)
+        {
+            world_array[posy, posx].Image = null;
+            posx++;
+            world_array[posy, posx].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/unit.png");
         }
     }
 }

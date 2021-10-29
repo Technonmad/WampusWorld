@@ -11,7 +11,7 @@ namespace WampusWorld
     public class World
     {
         Random random = new Random();
-        int row_wampus, col_wampus, row_treasure, col_treasure, row_pit1, col_pit1, row_pit2, col_pit2;
+        public int row_wampus, col_wampus, row_treasure, col_treasure, row_pit1, col_pit1, row_pit2, col_pit2;
 
 
         public void MakeWorld(Panel panel1, Button[,] World_array) 
