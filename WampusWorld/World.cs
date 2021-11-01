@@ -45,7 +45,8 @@ namespace WampusWorld
                 col_wampus = random.Next(0, 3);
             }
             World_array[row_wampus, col_wampus].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/wampus.png");
-            if((row_wampus + 1) < 4)
+            World_array[row_wampus, col_wampus].Text += "W";
+            if ((row_wampus + 1) < 4)
                 World_array[row_wampus + 1, col_wampus].Text += "S";
             if((col_wampus + 1) < 4)
                 World_array[row_wampus, col_wampus + 1].Text += "S";
@@ -70,6 +71,8 @@ namespace WampusWorld
 
             World_array[row_treasure, col_treasure].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/treasure.png");
             World_array[row_treasure, col_treasure].Text = "G";
+            World_array[row_treasure, col_treasure].Text = "T";
+
         }
 
         public void makePits(Panel panel1, Button[,] World_array)
@@ -85,7 +88,8 @@ namespace WampusWorld
             }
 
             World_array[row_pit1, col_pit1].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/pit.png");
-            
+            World_array[row_pit1, col_pit1].Text += "P";
+
             row_pit2 = random.Next(0, 3);
             col_pit2 = random.Next(0, 3);
 
@@ -97,8 +101,9 @@ namespace WampusWorld
             }
 
             World_array[row_pit2, col_pit2].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/pit.png");
+            World_array[row_pit2, col_pit2].Text += "P";
 
-            if((row_pit1 + 1) < 4)
+            if ((row_pit1 + 1) < 4)
             {
                 if (World_array[row_pit1 + 1, col_pit1].Text != "B" && World_array[row_pit1 + 1, col_pit1].Text != "SB")
                     World_array[row_pit1 + 1, col_pit1].Text += "B";

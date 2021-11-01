@@ -13,6 +13,7 @@ namespace WampusWorld
     public partial class Form1 : Form
     {
         public Game game = new Game();
+        int score = 1000;
         public Form1()
         {
             InitializeComponent();
@@ -30,12 +31,18 @@ namespace WampusWorld
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            game.startGame(panel1);
+            game.startGame(panel1, panel2, textBox1);
         }
 
         private void button33_Click(object sender, EventArgs e)
         {
-            game.MoveUnit(panel1);
+            game.MoveUnit(panel1, textBox1);
+            score -= 10;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
