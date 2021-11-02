@@ -33,8 +33,7 @@ namespace WampusWorld
             this.button33 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Restart_Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panel1
@@ -66,8 +65,10 @@ namespace WampusWorld
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(225, 340);
-            this.textBox1.TabIndex = 18;
+            this.textBox1.TabIndex = 0;
+            this.textBox1.TabStop = false;
             // 
             // panel2
             // 
@@ -78,33 +79,26 @@ namespace WampusWorld
             this.panel2.Size = new System.Drawing.Size(430, 397);
             this.panel2.TabIndex = 1;
             // 
-            // label2
+            // Restart_Button
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(420, 428);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 31);
-            this.label2.TabIndex = 20;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(344, 428);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 25);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Score:";
+            this.Restart_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Restart_Button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.Restart_Button.Location = new System.Drawing.Point(884, 412);
+            this.Restart_Button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Restart_Button.Name = "Restart_Button";
+            this.Restart_Button.Size = new System.Drawing.Size(227, 50);
+            this.Restart_Button.TabIndex = 19;
+            this.Restart_Button.Text = "Перезапустить";
+            this.Restart_Button.UseVisualStyleBackColor = true;
+            this.Restart_Button.Visible = false;
+            this.Restart_Button.Click += new System.EventHandler(this.Restart_Button_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1160, 464);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Restart_Button);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button33);
@@ -124,8 +118,7 @@ namespace WampusWorld
         private System.Windows.Forms.Button button33;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Restart_Button;
     }
 }
 
