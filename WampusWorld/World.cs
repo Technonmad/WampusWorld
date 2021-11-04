@@ -44,7 +44,7 @@ namespace WampusWorld
                 row_wampus = random.Next(0, 3);
                 col_wampus = random.Next(0, 3);
             }
-            World_array[row_wampus, col_wampus].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/wampus.png");
+            World_array[row_wampus, col_wampus].Image = Image.FromFile("C:/Users/Anton/Documents/GitHub/WampusWorld/images/wampus.png");
             World_array[row_wampus, col_wampus].Text += "W";
             if ((row_wampus + 1) < 4)
                 World_array[row_wampus + 1, col_wampus].Text += "S";
@@ -69,7 +69,7 @@ namespace WampusWorld
                 col_treasure = random.Next(0, 3);
             }
 
-            World_array[row_treasure, col_treasure].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/treasure.png");
+            World_array[row_treasure, col_treasure].Image = Image.FromFile("C:/Users/Anton/Documents/GitHub/WampusWorld/images/treasure.png");
             World_array[row_treasure, col_treasure].Text = "G";
             World_array[row_treasure, col_treasure].Text = "T";
 
@@ -81,13 +81,13 @@ namespace WampusWorld
             col_pit1 = random.Next(0, 3);
             
             while((row_pit1 == row_wampus && col_pit1 == col_wampus) || (row_pit1 == 0
-                && col_pit1 == 0) || (row_pit1 == row_treasure && col_pit1 == col_treasure))
+                || col_pit1 == 0) || (row_pit1 == row_treasure && col_pit1 == col_treasure))
             {
                 row_pit1 = random.Next(0, 3);
                 col_pit1 = random.Next(0, 3);
             }
 
-            World_array[row_pit1, col_pit1].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/pit.png");
+            World_array[row_pit1, col_pit1].Image = Image.FromFile("C:/Users/Anton/Documents/GitHub/WampusWorld/images/pit.png");
             World_array[row_pit1, col_pit1].Text += "P";
 
             row_pit2 = random.Next(0, 3);
@@ -100,7 +100,7 @@ namespace WampusWorld
                 col_pit2 = random.Next(0, 3);
             }
 
-            World_array[row_pit2, col_pit2].Image = Image.FromFile("C://Users/User/Documents/GitHub/WampusWorld/images/pit.png");
+            World_array[row_pit2, col_pit2].Image = Image.FromFile("C:/Users/Anton/Documents/GitHub/WampusWorld/images/pit.png");
             World_array[row_pit2, col_pit2].Text += "P";
 
             if ((row_pit1 + 1) < 4)
