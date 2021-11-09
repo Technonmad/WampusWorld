@@ -90,7 +90,6 @@ namespace WampusWorld
             this.Restart_Button.TabIndex = 19;
             this.Restart_Button.Text = "Перезапустить";
             this.Restart_Button.UseVisualStyleBackColor = true;
-            this.Restart_Button.Visible = false;
             this.Restart_Button.Click += new System.EventHandler(this.Restart_Button_Click);
             // 
             // Form1

@@ -35,11 +35,11 @@ namespace WampusWorld
 
         private void button33_Click(object sender, EventArgs e)
         {
-            game.MoveUnit(panel1, textBox1);
+            game.MoveUnit(textBox1);
             if (game.checkWinOrDie(textBox1))
             {
                 button33.Enabled = false;
-                Restart_Button.Visible = true;
+                //Restart_Button.Visible = true;
             }
         }
 
@@ -55,7 +55,7 @@ namespace WampusWorld
             textBox1.Text = "";
             game.startGame(panel1, panel2, textBox1);
             button33.Enabled = true;
-            Restart_Button.Visible = false;
+            //Restart_Button.Visible = false;
         }
     }
 }
