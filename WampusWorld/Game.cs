@@ -11,7 +11,7 @@ namespace WampusWorld
     public class Game
     {
         World world = new World();
-        int posx, posy, flag, pitsCount = 0;
+        int posx, posy, flag = 0, pitsCount = 0;
         bool arrow = true;
 
         Knowledge knowledge = new Knowledge();
@@ -28,104 +28,46 @@ namespace WampusWorld
 
         public void MoveUnit(TextBox adventure_log)
         {
-
             try
             {
-
-                //Может ли пойти направо
-                if (posx < 3)
+                if (posx == 0 && posy == 3 && knowledge_array[posy, posx + 1].Text.Contains("?") && knowledge_array[posy - 1, posx].Text.Contains("?"))
                 {
-                    if (knowledge_array[posy, posx + 1].Text == "" || knowledge_array[posy, posx + 1].Text.Contains("OK"))
-                    {
-                        world_array[posy, posx].Image = null;
-                        world_array[posy, posx + 1].Image = Image.FromFile("C:/Users/User/Documents/GitHub/WampusWorld/images/unit.png");
-                        posx++;
-                    }
+                    GoRight();
+                }
+                //Может ли пойти направо
+                else if (knowledge_array[posy, posx + 1].Text == "")
+                {
+
+                    GoRight();
+
+
                 }
                 //или налево
                 else if (knowledge_array[posy, posx - 1].Text == "")
                 {
-                    world_array[posy, posx].Image = null;
-                    world_array[posy, posx - 1].Image = Image.FromFile("C:/Users/User/Documents/GitHub/WampusWorld/images/unit.png");
-                    posx--;
+
+                    GoLeft();
+
                 }
                 //а может вверх?
                 else if (knowledge_array[posy - 1, posx].Text == "")
                 {
-                    world_array[posy, posx].Image = null;
-                    world_array[posy - 1, posx].Image = Image.FromFile("C:/Users/User/Documents/GitHub/WampusWorld/images/unit.png");
-                    posy--;
+                    GoUp();
                 }
                 else
                 {
-                    for (int j = 3; j > 0; j--)
-                    {
-                        for (int i = 0; i < 4; i++)
-                        {
-                            if (knowledge_array[j, i].Text == "")
-                            {
-                                world_array[posy, posx].Image = null;
-                                posx = i;
-                                posy = j;
-                                world_array[posy, posy].Image = Image.FromFile("C:/Users/User/Documents/GitHub/WampusWorld/images/unit.png");
-                                flag = 1;
-                                break;
-                            }
-                        }
-                        if (flag == 1)
-                            break;
-                    }
 
+                    GoUp();
                 }
-                //нет? Тогда пробуем найти непосещенные клетки
-                //else
-                //{
-                //    for (int i = posy; i > 0; i--)
-                //    {
-                //        for (int j = posx; j < 4; j++)
-                //        {
-                //            if (knowledge_array[i, j].Text == "")
-                //            {
-                //                world_array[posy, posx].Image = null;
-                //                world_array[i, j].Image = Image.FromFile("C:/Users/User/Documents/GitHub/WampusWorld/images/unit.png");
-                //                posx = j;
-                //                posy = i;
-                //                flag = 1;
-                //                break;
-                //            }
-                //        }
-                //        if (flag == 1)
-                //            break;
-                //    }
-
-                //}
-
             }
-            //если уперлись в стену
-            //пробуем пройти выше
             catch
             {
-                /*if(posy > 0)
-                {
-                    for (int i = posy - 1; i > 0; i--)
-                    {
-                        for (int j = posx; j < 4; j++)
-                        {
-                            if (knowledge_array[i, j].Text == "")
-                            {
-                                world_array[posy, posx].Image = null;
-                                world_array[i, j].Image = Image.FromFile("C:/Users/User/Documents/GitHub/WampusWorld/images/unit.png");
-                                posx = j;
-                                posy = i;
-                                flag = 1;
-                                break;
-                            }
-                        }
-                        if (flag == 1)
-                            break;
-                    }
-                }*/
+                ChangeLevel();
             }
+
+
+
+
             if (!knowledge_array[posy, posx].Text.Contains("OK"))
                 checkPlace(adventure_log);
         }
@@ -171,6 +113,20 @@ namespace WampusWorld
                         knowledge_array[posy - 1, posx].Text += " P? ";
                     if (world_array[posy, posx].Text.Contains("S"))
                         knowledge_array[posy - 1, posx].Text += " W? ";
+                }
+                if (posx + 1 < 4)
+                {
+                    if (world_array[posy, posx].Text.Contains("B") && !knowledge_array[posx + 1, posx].Text.Contains("OK"))
+                        knowledge_array[posy, posx + 1].Text += " P? ";
+                    if (world_array[posy, posx].Text.Contains("S"))
+                        knowledge_array[posy, posx + 1].Text += " W? ";
+                }
+                if (posy + 1 < 4)
+                {
+                    if (world_array[posy, posx].Text.Contains("B") && !knowledge_array[posy + 1, posx].Text.Contains("OK"))
+                        knowledge_array[posy + 1, posx].Text += " P? ";
+                    if (world_array[posy, posx].Text.Contains("S"))
+                        knowledge_array[posy + 1, posx].Text += " W? ";
                 }
                 if (world_array[posy, posx].Text == "B")
                     adventure_log.Text += "Сквозняк...наверняка где-то поблизости есть яма" + Environment.NewLine + Environment.NewLine;
@@ -219,5 +175,62 @@ namespace WampusWorld
             }
         }
 
+        public void GoRight()
+        {
+
+            world_array[posy, posx].Image = null;
+            world_array[posy, posx + 1].Image = Image.FromFile("C:/Users/User/Documents/GitHub/WampusWorld/images/unit.png");
+            posx++;
+
+        }
+        public void GoLeft()
+        {
+            if (knowledge_array[posy, posx - 1].Text == "" || knowledge_array[posy, posx - 1].Text.Contains("OK"))
+            {
+                world_array[posy, posx].Image = null;
+                world_array[posy, posx - 1].Image = Image.FromFile("C:/Users/User/Documents/GitHub/WampusWorld/images/unit.png");
+                posx--;
+            }
+        }
+        public void GoDown()
+        {
+            if (knowledge_array[posy + 1, posx].Text == "" || knowledge_array[posy + 1, posx].Text.Contains("OK"))
+            {
+                world_array[posy, posx].Image = null;
+                world_array[posy + 1, posx].Image = Image.FromFile("C:/Users/User/Documents/GitHub/WampusWorld/images/unit.png");
+                posy++;
+            }
+        }
+        public void GoUp()
+        {
+            if (knowledge_array[posy - 1, posx].Text == "" || knowledge_array[posy - 1, posx].Text.Contains("OK"))
+            {
+                world_array[posy, posx].Image = null;
+                world_array[posy - 1, posx].Image = Image.FromFile("C:/Users/User/Documents/GitHub/WampusWorld/images/unit.png");
+                posy--;
+            }
+        }
+
+        public void ChangeLevel()
+        {
+            flag = 0;
+            for (int j = 0; j > 0; j--)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (knowledge_array[j, i].Text == "")
+                    {
+                        world_array[posy, posx].Image = null;
+                        posx = i;
+                        posy = j;
+                        world_array[posy, posx].Image = Image.FromFile("C:/Users/User/Documents/GitHub/WampusWorld/images/unit.png");
+                        flag = 1;
+                        break;
+                    }
+                }
+                if (flag == 1)
+                    break;
+            }
+        }
     }
 }
