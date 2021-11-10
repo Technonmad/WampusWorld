@@ -13,19 +13,10 @@ namespace WampusWorld
     public partial class Form1 : Form
     {
         public Game game = new Game();
+        int score = 0;
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -36,14 +27,33 @@ namespace WampusWorld
         private void button33_Click(object sender, EventArgs e)
         {
             game.MoveUnit(textBox1);
-            if (game.checkWinOrDie(textBox1))
+            score -= 10;
+            score_label.Text = Convert.ToString(score);
+            if (game.checkWinOrDie(textBox1) == 1)
             {
+                score += 1000;
+                score_label.Text = Convert.ToString(score);
                 button33.Enabled = false;
-                //Restart_Button.Visible = true;
+            }
+            if (game.checkWinOrDie(textBox1) == 2)
+            {
+                score -= 1000;
+                score_label.Text = Convert.ToString(score);
+                button33.Enabled = false;
             }
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
